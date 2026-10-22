@@ -7,7 +7,7 @@ sprout-cdn 是一个个人静态资源公共 CDN 站点。所有资源全站开�
 
 ## 目录结构
 
-- `fonts/` - 字体文件（woff2），包含 LXGWWenKaiMono-Regular.woff2、MapleMono-Regular.ttf.woff2
+- `fonts/` - 字体文件（woff2），包含 LXGWWenKaiMono-Regular.woff2、MapleMono-Regular.woff2
 - `css/` - 样式文件
 - `js/` - 脚本文件
 - `img/` - 图片资源
