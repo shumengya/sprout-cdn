@@ -1,0 +1,29 @@
+# Cloudflare Pages 响应头配置（不随页面发布，由 Pages 单独解析）
+# 变更后需重新 deploy 才会生效；Pages 部署时会自动清空被改动文件的边缘缓存。
+
+/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Access-Control-Max-Age: 86400
+  Cross-Origin-Resource-Policy: cross-origin
+
+# 字体体积大、改动少：30 天 + 7 天后台异步刷新 + 回源失败时用旧副本兜底
+/fonts/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800, stale-if-error=604800
+
+/css/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800, stale-if-error=604800
+
+/js/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800, stale-if-error=604800
+
+# 图片一年不可变缓存
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# JSON 需要可更新，但不要让边缘彻底不缓存
+/json/*
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
+
+/files/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800

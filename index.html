@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sprout-cdn</title>
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;max-width:720px;margin:64px auto;padding:0 24px;color:#1f2328;line-height:1.6}
+  h1{font-size:24px;margin-bottom:4px}
+  .muted{color:#6b7280;font-size:14px}
+  code{background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:13px}
+  ul{line-height:2}
+  a{color:#2563eb;text-decoration:none}
+  a:hover{text-decoration:underline}
+  pre{background:#0d1117;color:#e6edf3;padding:14px 16px;border-radius:8px;overflow:auto;font-size:13px;line-height:1.5}
+  pre code{background:none;color:inherit;padding:0}
+</style>
+</head>
+<body>
+  <h1>sprout-cdn</h1>
+  <p class="muted">静态资源 CDN，供其它网页跨域调用。均已启用 CORS 与长缓存。</p>
+  <p class="muted">结构：fonts / css / js / img / json / files，均已启用 CORS 与按类型缓存。</p>
+  <h2 style="font-size:16px">fonts</h2>
+  <ul>
+    <li><a href="./fonts/LXGWWenKaiMono-Regular.woff2">fonts/LXGWWenKaiMono-Regular.woff2</a></li>
+    <li><a href="./fonts/MapleMono-Regular.ttf.woff2">fonts/MapleMono-Regular.ttf.woff2</a></li>
+  </ul>
+  <h2 style="font-size:16px">css</h2>
+  <ul><li><a href="./css/example.css">css/example.css</a></li></ul>
+  <h2 style="font-size:16px">js</h2>
+  <ul><li><a href="./js/example.js">js/example.js</a></li></ul>
+  <h2 style="font-size:16px">img</h2>
+  <ul><li><a href="./img/example.svg">img/example.svg</a></li></ul>
+  <h2 style="font-size:16px">json</h2>
+  <ul><li><a href="./json/example.json">json/example.json</a></li></ul>
+  <h2 style="font-size:16px">files</h2>
+  <ul><li><a href="./files/example.txt">files/example.txt</a></li></ul>
+  <h2 style="font-size:16px;margin-top:32px">字体用法</h2>
+  <pre><code>@font-face {
+  font-family: 'LXGWWenKaiMono';
+  src: url('https://sprout-cdn.pages.dev/fonts/LXGWWenKaiMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+body { font-family: 'LXGWWenKaiMono', monospace; }</code></pre>
+</body>
+</html>

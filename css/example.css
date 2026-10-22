@@ -1,0 +1,13 @@
+/* sprout-cdn / css 示例 — 使用: https://sprout-cdn.pages.dev/css/example.css */
+:root {
+  --sprout-primary: #2563eb;
+  --sprout-radius: 8px;
+}
+.sprout-card {
+  padding: 16px 20px;
+  border-radius: var(--sprout-radius);
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #1f2328;
+  font-family: system-ui, sans-serif;
+}

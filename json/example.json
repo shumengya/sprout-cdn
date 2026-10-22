@@ -1,0 +1,10 @@
+{
+  "name": "sprout-cdn",
+  "version": "1.0.0",
+  "assets": {
+    "fonts/LXGWWenKaiMono-Regular.woff2": "1.0.0",
+    "css/example.css": "1.0.0",
+    "js/example.js": "1.0.0",
+    "img/example.svg": "1.0.0"
+  }
+}

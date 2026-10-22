@@ -1,0 +1,58 @@
+# sprout-cdn
+
+> 静态资源 CDN，基于 Cloudflare Pages 部署，供其它网页跨域调用。
+> 线上地址: https://sprout-cdn.pages.dev
+
+sprout-cdn 是一个个人静态资源公共 CDN 站点。所有资源全站开启 CORS（`Access-Control-Allow-Origin: *`），并按资源类型配置了 Cloudflare Pages 的 `_headers` 缓存策略，可被任意网页直接跨域引用。
+
+## 目录结构
+
+- `fonts/` - 字体文件（woff2），包含 LXGWWenKaiMono-Regular.woff2、MapleMono-Regular.ttf.woff2
+- `css/` - 样式文件
+- `js/` - 脚本文件
+- `img/` - 图片资源
+- `json/` - JSON 数据文件
+- `files/` - 其它静态文件
+- `_headers` - Cloudflare Pages 自定义响应头（CORS 与缓存策略）
+- `index.html` - 资源目录展示页
+
+## 缓存策略
+
+- `/fonts/*` 与 `/css/*`: `Cache-Control: public, max-age=604800, stale-while-revalidate=86400`
+- `/img/*`: `Cache-Control: public, max-age=31536000, immutable`
+- `/json/*`: `Cache-Control: no-cache`
+
+全站响应头：
+
+```
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+```
+
+## 资源引用方式
+
+所有资源通过 `https://sprout-cdn.pages.dev/<目录>/<文件名>` 直接访问，例如：
+
+- 字体: `https://sprout-cdn.pages.dev/fonts/LXGWWenKaiMono-Regular.woff2`
+- 样式: `https://sprout-cdn.pages.dev/css/example.css`
+- 脚本: `https://sprout-cdn.pages.dev/js/example.js`
+- 图片: `https://sprout-cdn.pages.dev/img/example.svg`
+- JSON: `https://sprout-cdn.pages.dev/json/example.json`
+
+CSS 中引用字体的示例：
+
+```css
+@font-face {
+  font-family: 'LXGWWenKaiMono';
+  src: url('https://sprout-cdn.pages.dev/fonts/LXGWWenKaiMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+```
+
+## 部署方式
+
+仓库绑定 Cloudflare Pages，推送到 `main` 分支即自动部署。本地可用 `npx wrangler pages dev .` 预览。
+
+## 维护说明
+
+新增资源时放入对应类型目录（`fonts/css/js/img/json/files`）并推送到 `main` 即可；新增目录需同步在 `_headers` 中补充缓存规则，并在 `index.html` 目录页中登记。
