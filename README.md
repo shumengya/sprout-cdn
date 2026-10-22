@@ -29,9 +29,12 @@ sprout-cdn/
 
 | 路径 | 策略 |
 |------|------|
-| `/fonts/*`、`/css/*` | `max-age=604800`（7 天）+ `stale-while-revalidate` |
+| `/fonts/*`、`/css/*`、`/js/*`、`/files/*` | `max-age=2592000`（30 天）+ `stale-while-revalidate=604800` + `stale-if-error=604800` |
 | `/img/*` | `max-age=31536000, immutable`（1 年） |
-| `/json/*` | `no-cache`（每次校验） |
+| `/json/*` | `max-age=60` + `stale-while-revalidate=600`（可被边缘缓存，最多 1 分钟旧数据） |
+
+> 文件名未做 hash 版本化，因此非图片资源统一用 30 天而非 1 年 `immutable`，避免更新后客户端长期不刷新。
+> 若后续改为 `app.3f2a1c.css` 这类带 hash 的文件名，可把该目录改成 `max-age=31536000, immutable`。
 
 ## 使用示例
 
@@ -62,7 +65,11 @@ fetch('https://sprout-cdn.pages.dev/json/example.json')
 
 ## 部署
 
-推送到 `main` 分支即自动触发 Cloudflare Pages 部署（已在 Cloudflare Pages 控制台绑定本仓库）。
+本目录以 Direct Upload 方式部署（未绑定 Git 自动构建）：
+
+```bash
+npx wrangler pages deploy . --project-name sprout-cdn --branch main
+```
 
 本地预览：
 

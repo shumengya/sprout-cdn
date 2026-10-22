@@ -18,9 +18,9 @@ sprout-cdn 是一个个人静态资源公共 CDN 站点。所有资源全站开�
 
 ## 缓存策略
 
-- `/fonts/*` 与 `/css/*`: `Cache-Control: public, max-age=604800, stale-while-revalidate=86400`
+- `/fonts/*`、`/css/*`、`/js/*`、`/files/*`: `Cache-Control: public, max-age=2592000, stale-while-revalidate=604800, stale-if-error=604800`
 - `/img/*`: `Cache-Control: public, max-age=31536000, immutable`
-- `/json/*`: `Cache-Control: no-cache`
+- `/json/*`: `Cache-Control: public, max-age=60, stale-while-revalidate=600`
 
 全站响应头：
 
@@ -51,7 +51,7 @@ CSS 中引用字体的示例：
 
 ## 部署方式
 
-仓库绑定 Cloudflare Pages，推送到 `main` 分支即自动部署。本地可用 `npx wrangler pages dev .` 预览。
+Direct Upload 部署：`npx wrangler pages deploy . --project-name sprout-cdn --branch main`。本地可用 `npx wrangler pages dev .` 预览。
 
 ## 维护说明
 
